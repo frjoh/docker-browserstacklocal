@@ -3,6 +3,7 @@ FROM debian:stable-slim
 ENV BROWSERSTACK_LOCAL_KEY=
 
 COPY ./entrypoint.sh /
+RUN ["chmod", "+x", "/entrypoint.sh"]
 
 RUN apt-get update && \
     apt-get upgrade -y && \
