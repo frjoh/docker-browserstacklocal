@@ -2,6 +2,7 @@ FROM debian:stable-slim
 
 ENV BROWSERSTACK_LOCAL_KEY=
 
+COPY ./entrypoint.sh /
 
 RUN apt-get update && \
     apt-get upgrade -y && \
@@ -13,5 +14,4 @@ RUN wget https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux
     chmod +x BrowserStackLocal && \
     mv BrowserStackLocal /usr/local/bin
 
-
-ENTRYPOINT ["sh","-c","/usr/local/bin/BrowserStackLocal", "--key","$BROWSERSTACK_LOCAL_KEY"]
+ENTRYPOINT ["/entrypoint.sh"]
